@@ -8,3 +8,9 @@
 ```
  A modern ecommerce landing page
 ```
+
+## Run application
+
+```
+npm start
+```
