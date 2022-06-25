@@ -23,3 +23,5 @@ export const GetYposition = () => {
 
   return scrollY;
 };
+
+export const executeScrollToRef = (refRef) => refRef.current.scrollIntoView();

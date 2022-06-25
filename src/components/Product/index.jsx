@@ -1,10 +1,12 @@
 import { assets } from '../../assets/constants';
 import { Filter } from './components/Filter';
 import { ProductStyle } from './styles';
-import useRipple from 'useripple';
+import { RippleButton } from '../Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 export const Product = () => {
-  const [addRipple, ripples] = useRipple({ background: 'var(--ocean-green)' });
+  const navigate = useNavigate();
+
   return (
     <ProductStyle>
       <section className="section product">
@@ -416,11 +418,16 @@ export const Product = () => {
             </li>
           </ul>
 
-          {/* view more button */}
-          <button onClick={addRipple} className="btn btn-outline ripple-button">
+          <RippleButton
+            color="var(--ocean-green)"
+            className="btn btn-outline ripple-button"
+          >
+            <div
+              onClick={() => navigate('/products')}
+              className="clickable"
+            ></div>
             View All Products
-            {ripples}
-          </button>
+          </RippleButton>
         </div>
       </section>
     </ProductStyle>

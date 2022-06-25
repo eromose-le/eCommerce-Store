@@ -1,10 +1,19 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { assets } from '../../assets/constants';
 import { HeaderStyle } from './styles';
-import { GetYposition } from '../../utils/reusable';
+import { executeScrollToRef, GetYposition } from '../../utils/reusable';
+import { useNavigate, NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { getBlogRefSuccess } from '../../redux/reducers/refRedux';
 
 export const Header = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  // const blogRef = useSelector((state) => state.ref.blogRef);
+  // console.debug('blogRef', blogRef);
+
   const [toggle, setToggle] = useState(false);
+  const valueRef = useRef(null);
 
   const onToggle = (e) => {
     e.preventDefault();
@@ -13,8 +22,14 @@ export const Header = () => {
 
   const showHeader = () => (GetYposition() >= 200 ? 'header active' : 'header');
 
+  const goToValueRef = () => {
+    dispatch(getBlogRefSuccess('Dispatched'));
+    executeScrollToRef(valueRef);
+  };
+
   return (
     <HeaderStyle>
+      <div ref={valueRef}></div>
       <header className={showHeader()}>
         <div className="container">
           {/* overlay bg */}
@@ -37,10 +52,10 @@ export const Header = () => {
           </div>
 
           {/* logo */}
-          <a href="/" className="logo">
+          <div className="logo" onClick={() => navigate('/')}>
             <img src={assets.logo1} alt="BA logo" width={130} height={31} />
             <p className="h3">BA.</p>
-          </a>
+          </div>
 
           {/* actions (bottom nav) */}
           <div className="header-actions">
@@ -78,37 +93,37 @@ export const Header = () => {
           {/* actions (side nav) */}
           <nav className={`${toggle ? 'navbar active' : 'navbar'}`}>
             <div className="navbar-top">
-              <a href="/" className="logo">
+              <div to="/" className="logo">
                 <img src={assets.logo1} alt="BA logo" width={130} height={31} />
                 <p className="h3">BA.</p>
-              </a>
+              </div>
               <button className="nav-close-btn" onClick={onToggle}>
                 <ion-icon name="close-outline" />
               </button>
             </div>
             <ul className="navbar-list">
               <li>
-                <a href="/" className="navbar-link">
+                <NavLink to="/" className="navbar-link" onClick={goToValueRef}>
                   Home
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a href="/" className="navbar-link">
+                <NavLink to="/" className="navbar-link">
                   Shop
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a href="/" className="navbar-link">
+                <NavLink to="/" className="navbar-link">
                   About
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a href="/" className="navbar-link">
+                <a href="#blog" className="navbar-link">
                   Blog
                 </a>
               </li>
               <li>
-                <a href="/" className="navbar-link">
+                <a href="#footer" className="navbar-link">
                   Contact
                 </a>
               </li>

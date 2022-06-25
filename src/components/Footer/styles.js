@@ -231,4 +231,11 @@ export const ScrollButton = styled(Button)`
   position: fixed;
   bottom: 6em;
   right: 2em;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    transform: scale(1.5);
+    transition: ease-in-out 1s;
+  }
 `;

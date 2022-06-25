@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import useRipple from 'useripple';
 
 export const RippleButton = ({
@@ -10,9 +11,27 @@ export const RippleButton = ({
   const [addRipple, ripples] = useRipple({ background: color });
 
   return (
-    <button onClick={addRipple} className={className} style={{ ...rest }}>
+    <RippleButtonStyle
+      onClick={addRipple}
+      className={className}
+      style={{ ...rest }}
+    >
       {children}
       {ripples}
-    </button>
+    </RippleButtonStyle>
   );
 };
+
+export const RippleButtonStyle = styled.button`
+  position: relative;
+
+  .clickable {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    /* background-color: var(--ocean-green); */
+    opacity: 0.1;
+  }
+`;

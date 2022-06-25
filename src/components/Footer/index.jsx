@@ -11,7 +11,7 @@ export const Footer = () => {
 
   return (
     <FooterStyle>
-      <footer className="footer">
+      <footer id="footer" className="footer">
         {/* top */}
         <div className="footer-top">
           <div className="container">

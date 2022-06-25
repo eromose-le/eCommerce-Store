@@ -1,13 +1,10 @@
 import { assets } from '../../assets/constants';
 import { NewsletterStyle } from './styles';
-import useRipple from 'useripple';
 import { RippleButton } from '../Button/Button';
 
 export const Newsletter = () => {
-  const [addRipple, ripples] = useRipple({ background: 'var(--ocean-green)' });
-
-  const passFunc = () => {
-    console.log('passed Func!!');
+  const rippleBtnFunctions = () => {
+    // console.log('passed Func!!');
   };
   return (
     <NewsletterStyle>
@@ -35,26 +32,26 @@ export const Newsletter = () => {
                   className="input-field"
                 />
               </div>
-              <button
+              <RippleButton
+                color="var(--ocean-green)"
+                className="btn btn-primary w-100 ripple-button"
+                // height={'200px'}
+              >
+                <div onClick={rippleBtnFunctions} className="clickable"></div>
+                <span>Subscribe</span>
+                <ion-icon name="arrow-forward" aria-hidden="true" />
+              </RippleButton>
+              {/* <button
                 onClick={addRipple}
                 className="btn btn-primary w-100 ripple-button"
               >
                 <span>Subscribe</span>
                 <ion-icon name="arrow-forward" aria-hidden="true" />
                 {ripples}
-              </button>
+              </button> */}
             </form>
           </div>
         </div>
-
-        <RippleButton
-          color="blue"
-          className="btn btn-primary w-100 ripple-button"
-          height={'200px'}
-        >
-          <span onClick={passFunc}>Subscribe</span>
-          <ion-icon name="arrow-forward" aria-hidden="true" />
-        </RippleButton>
       </section>
     </NewsletterStyle>
   );

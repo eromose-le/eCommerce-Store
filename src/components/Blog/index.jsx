@@ -4,7 +4,8 @@ import { BlogStyle } from './styles';
 export const Blog = () => {
   return (
     <BlogStyle>
-      <section className="section blog">
+      {/* <div id="blog"></div> */}
+      <section id="blog" className="section blog">
         <div className="container">
           <h2 className="h2 section-title">Latest fashion news</h2>
           <ul className="blog-list">
