@@ -5,6 +5,7 @@ export const BannerStyle = styled.section`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: left;
+    background-attachment: fixed;
     width: 100%;
     min-height: 80vh;
     padding-block: var(--section-padding);
